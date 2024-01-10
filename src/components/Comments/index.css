@@ -1,0 +1,61 @@
+/* Write your CSS here */
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.subcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+.inputscontainer {
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  font-size: 40px;
+  color: #1e293b;
+  font-weight: bold;
+}
+
+.para {
+  font-size: 20px;
+  color: #475569;
+}
+.inputname {
+  padding: 10px;
+  color: #1e293b;
+  font-size: 20px;
+}
+.inputcommet {
+  font-size: 20px;
+  color: #1e293b;
+  padding: 10px;
+}
+.addcommentbutton {
+  background-color: #0284c7;
+  font-size: 20px;
+  color: #dee0e3;
+}
+.image {
+  width: 40%;
+}
+.hrline {
+  color: #7e858e;
+}
+.commentcountcontaienr {
+  display: flex;
+}
+.commentcount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0b69ff;
+  font-size: 15px;
+  color: #dee0e3;
+}
+.commentslist {
+  display: flex;
+  flex-direction: column;
+}
