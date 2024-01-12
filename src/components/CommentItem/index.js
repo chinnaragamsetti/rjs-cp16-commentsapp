@@ -3,7 +3,12 @@
 import './index.css'
 
 const CommentItem = props => {
-  const {name, comment} = props
+  const {eachDetails, afterDelete} = props
+  const {id, name, comment} = eachDetails
+
+  const onDeletelist = () => {
+    afterDelete(id)
+  }
 
   return (
     <li className="eachlist">
@@ -23,11 +28,13 @@ const CommentItem = props => {
           />
           <p className="likepara">Like</p>
         </div>
-        <img
-          alt="delete"
-          src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png "
-          className="deleteicon"
-        />
+        <button type="button" onClick={onDeletelist} className="deleteButton">
+          <img
+            alt="delete"
+            src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png "
+            className="deleteicon"
+          />
+        </button>
       </div>
     </li>
   )

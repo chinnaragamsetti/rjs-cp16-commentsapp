@@ -19,37 +19,43 @@ const initialcommentslist = []
 
 class Comments extends Component {
   state = {
-    inputname: '',
-    inputcomment: '',
-    commentscount: 0,
-    commentslist: initialcommentslist,
+    inputName: '',
+    inputComment: '',
+    commentsCount: 0,
+    commentsList: initialcommentslist,
   }
 
   onChangename = event => {
-    this.setState({inputname: event.target.value})
+    this.setState({inputName: event.target.value})
   }
 
   onChangecomment = event => {
-    this.setState({inputcomment: event.target.value})
+    this.setState({inputComment: event.target.value})
   }
 
   onAddcomment = () => {
-    const {inputname, inputcomment, commentscount, commentslist} = this.state
-    const newcomment = {
+    const {inputName, inputComment, commentsList} = this.state
+    const newComment = {
       id: uuidv4(),
-      name: {inputname},
-      comment: {inputcomment},
+      name: {inputName},
+      comment: {inputComment},
     }
     this.setState(prevState => ({
-      commentslist: [...commentslist, newcomment],
-      commentscount: prevState.commentscount + 1,
-      inputname: '',
-      inputcomment: '',
+      commentsList: [...commentsList, newComment],
+      commentsCount: prevState.commentsCount + 1,
+      inputName: '',
+      inputComment: '',
     }))
   }
 
+  afterDelete = id => {
+    const {commentsList} = this.state
+    const afterdDeletelist = commentsList.filter(each => each.id === id)
+    this.setState({commentsList: afterdDeletelist})
+  }
+
   render() {
-    const {inputname, inputcomment, commentcount, commentslist} = this.state
+    const {inputName, inputComment, commentsCount, commentsList} = this.state
 
     return (
       <div className="maincontainer">
@@ -62,19 +68,23 @@ class Comments extends Component {
                 type="text"
                 onChange={this.onChangename}
                 className="inputname"
-                value={inputname}
+                value={inputName}
                 placeholder="Your Name"
               />
               <textarea
                 className="inputcomment"
                 onChange={this.onChangecomment}
-                rows="8"
+                rows="4"
                 cols="25"
                 placeholder="Your Comment"
               >
-                {inputcomment}
+                {inputComment}
               </textarea>
-              <button type="submit" className="addcommentbutton">
+              <button
+                onClick={this.onAddcomment}
+                type="submit"
+                className="addcommentbutton"
+              >
                 Add Comment
               </button>
             </form>
@@ -90,13 +100,17 @@ class Comments extends Component {
 
         <div className="commentcountcontainer">
           <div className="commentcount">
-            <h1>{commentcount}</h1>
+            <h1>{commentsCount}</h1>
           </div>
           <p className="para">Comments</p>
         </div>
         <ul className="commentslist">
-          {commentslist.map(eachcomment => (
-            <CommentItem key={eachcomment.id} eachdetails={eachcomment} />
+          {commentsList.map(eachComment => (
+            <CommentItem
+              key={eachComment.id}
+              eachDetails={eachComment}
+              afterDelete={this.afterDelete()}
+            />
           ))}
         </ul>
       </div>

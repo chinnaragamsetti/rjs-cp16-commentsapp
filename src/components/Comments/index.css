@@ -2,11 +2,12 @@
 .maincontainer {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 50px;
 }
 
 .subcontainer {
   display: flex;
+
   justify-content: space-between;
 }
 .inputscontainer {
@@ -14,46 +15,73 @@
   flex-direction: column;
 }
 .heading {
-  font-size: 40px;
+  font-size: 35px;
+  font-family: 'Roboto';
   color: #1e293b;
   font-weight: bold;
 }
-
+.form {
+  display: flex;
+  flex-direction: column;
+}
 .para {
-  font-size: 20px;
+  font-size: 15px;
+  font-weight: bold;
   color: #475569;
 }
 .inputname {
   padding: 10px;
   color: #1e293b;
-  font-size: 20px;
+  font-size: 10px;
+  margin-bottom: 10px;
+  border-radius: 7px;
+  border: 1px solid #475569;
 }
-.inputcommet {
-  font-size: 20px;
+.inputcomment {
+  font-size: 10px;
   color: #1e293b;
   padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 7px;
 }
 .addcommentbutton {
   background-color: #0284c7;
-  font-size: 20px;
+  font-size: 10px;
   color: #dee0e3;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 40%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .image {
-  width: 40%;
+  width: 50%;
+  height: auto;
 }
 .hrline {
   color: #7e858e;
+  width: 100%;
 }
-.commentcountcontaienr {
+.commentcountcontainer {
   display: flex;
+  flex-direction: row;
+
+  justify-content: flex-start;
+  align-items: center;
 }
 .commentcount {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #0b69ff;
-  font-size: 15px;
+  margin-right: 10px;
+
   color: #dee0e3;
+  height: 25px;
+  width: 25px;
+  font-size: 7px;
+  border-radius: 2.5px;
 }
 .commentslist {
   display: flex;
