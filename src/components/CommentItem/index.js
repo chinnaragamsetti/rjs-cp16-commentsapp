@@ -4,7 +4,7 @@ import './index.css'
 
 const CommentItem = props => {
   const {eachDetails, afterDelete} = props
-  const {id, name, comment} = eachDetails
+  const {id, name, comment, date, profileClassname} = eachDetails
 
   const onDeletelist = () => {
     afterDelete(id)
@@ -13,10 +13,11 @@ const CommentItem = props => {
   return (
     <li className="eachlist">
       <div className="pro">
-        <div className="profileimage">
+        <div className={`profileimage ${profileClassname}`}>
           <h1 className="proimagehead">{name[0]}</h1>
         </div>
         <p className="name">{name}</p>
+        <p className="date">{date}</p>
       </div>
       <p className="comment">{comment}</p>
       <div className="likeanddeletecontainer">

@@ -3,7 +3,7 @@ import {v4 as uuidv4} from 'uuid'
 import {Component} from 'react'
 import CommentItem from '../CommentItem'
 
-/* const initialContainerBackgroundClassNames = [
+const initialContainerBackgroundClassNames = [
   'amber',
   'blue',
   'orange',
@@ -12,7 +12,7 @@ import CommentItem from '../CommentItem'
   'red',
   'light-blue',
 ]
-*/
+
 // Write your code here
 
 const initialcommentslist = []
@@ -33,12 +33,20 @@ class Comments extends Component {
     this.setState({inputComment: event.target.value})
   }
 
-  onAddcomment = () => {
+  onAddcomment = event => {
+    event.preventDefault()
     const {inputName, inputComment, commentsList} = this.state
+    const profileBackground =
+      initialContainerBackgroundClassNames[
+        Math.ceil(Math.random() * initialContainerBackgroundClassNames - 1)
+      ]
+    console.log(profileBackground)
     const newComment = {
       id: uuidv4(),
       name: {inputName},
       comment: {inputComment},
+      date: new Date(),
+      profileClassname: profileBackground,
     }
     this.setState(prevState => ({
       commentsList: [...commentsList, newComment],
@@ -50,8 +58,8 @@ class Comments extends Component {
 
   afterDelete = id => {
     const {commentsList} = this.state
-    const afterdDeletelist = commentsList.filter(each => each.id === id)
-    this.setState({commentsList: afterdDeletelist})
+    const afterdDeletelist = commentsList.filter(each => each.id !== id)
+    this.setState({commentsList: [...commentsList, afterdDeletelist]})
   }
 
   render() {
@@ -76,6 +84,7 @@ class Comments extends Component {
                 onChange={this.onChangecomment}
                 rows="4"
                 cols="25"
+                value={inputComment}
                 placeholder="Your Comment"
               >
                 {inputComment}
