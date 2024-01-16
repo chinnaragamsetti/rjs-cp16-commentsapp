@@ -32,6 +32,7 @@ const CommentItem = props => {
         <button type="button" onClick={onDeletelist} className="deleteButton">
           <img
             alt="delete"
+            data-testid="delete"
             src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png "
             className="deleteicon"
           />

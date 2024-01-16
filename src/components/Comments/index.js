@@ -35,21 +35,21 @@ class Comments extends Component {
 
   onAddcomment = event => {
     event.preventDefault()
-    const {inputName, inputComment, commentsList} = this.state
+    const {inputName, inputComment} = this.state
     const profileBackground =
       initialContainerBackgroundClassNames[
-        Math.ceil(Math.random() * initialContainerBackgroundClassNames - 1)
+        Math.floor(Math.random() * initialContainerBackgroundClassNames.length)
       ]
-    console.log(profileBackground)
+
     const newComment = {
       id: uuidv4(),
       name: {inputName},
       comment: {inputComment},
-      date: new Date(),
+      date: new Date().toLocaleString(),
       profileClassname: profileBackground,
     }
     this.setState(prevState => ({
-      commentsList: [...commentsList, newComment],
+      commentsList: [...prevState.commentsList, newComment],
       commentsCount: prevState.commentsCount + 1,
       inputName: '',
       inputComment: '',
@@ -57,9 +57,11 @@ class Comments extends Component {
   }
 
   afterDelete = id => {
-    const {commentsList} = this.state
     const afterdDeletelist = commentsList.filter(each => each.id !== id)
-    this.setState({commentsList: [...commentsList, afterdDeletelist]})
+    this.setState(prevState => ({
+      commentsList: afterdDeletelist,
+      commentsCount: prevState.commentsCount - 1,
+    }))
   }
 
   render() {
@@ -89,11 +91,7 @@ class Comments extends Component {
               >
                 {inputComment}
               </textarea>
-              <button
-                onClick={this.onAddcomment}
-                type="submit"
-                className="addcommentbutton"
-              >
+              <button type="submit" className="addcommentbutton">
                 Add Comment
               </button>
             </form>
@@ -118,7 +116,7 @@ class Comments extends Component {
             <CommentItem
               key={eachComment.id}
               eachDetails={eachComment}
-              afterDelete={this.afterDelete()}
+              afterDelete={this.afterDelete}
             />
           ))}
         </ul>
