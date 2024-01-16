@@ -67,9 +67,14 @@ class Comments extends Component {
   }
 
   onChangelikestatus = id => {
-    const {commentsList} = this.state
-    const afterLikedlist = commentsList.filter(each => each.id !== id)
-    this.setState({commentsList: afterLikedlist})
+     this.setState(prevState => ({
+      commentsList: prevState.commentsList.map(each => {
+        if (id === each.id) {
+          return {...each, isLiked: !each.isLiked}
+        }
+        return each
+      }),
+    }))
   }
 
   render() {
