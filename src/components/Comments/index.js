@@ -47,6 +47,7 @@ class Comments extends Component {
       comment: {inputComment},
       date: new Date().toLocaleString(),
       profileClassname: profileBackground,
+      isLiked: false,
     }
     this.setState(prevState => ({
       commentsList: [...prevState.commentsList, newComment],
@@ -57,11 +58,18 @@ class Comments extends Component {
   }
 
   afterDelete = id => {
+    const {commentsList} = this.state
     const afterdDeletelist = commentsList.filter(each => each.id !== id)
     this.setState(prevState => ({
       commentsList: afterdDeletelist,
       commentsCount: prevState.commentsCount - 1,
     }))
+  }
+
+  onChangelikestatus = id => {
+    const {commentsList} = this.state
+    const afterLikedlist = commentsList.filter(each => each.id !== id)
+    this.setState({commentsList: afterLikedlist})
   }
 
   render() {
@@ -117,6 +125,7 @@ class Comments extends Component {
               key={eachComment.id}
               eachDetails={eachComment}
               afterDelete={this.afterDelete}
+              onChangelikestatus={this.onChangelikestatus}
             />
           ))}
         </ul>

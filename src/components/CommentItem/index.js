@@ -3,13 +3,20 @@
 import './index.css'
 
 const CommentItem = props => {
-  const {eachDetails, afterDelete} = props
-  const {id, name, comment, date, profileClassname} = eachDetails
+  const {eachDetails, afterDelete, onChagelikestatus} = props
+  const {id, name, comment, date, profileClassname, isLiked} = eachDetails
 
   const onDeletelist = () => {
     afterDelete(id)
   }
+  const onLike = () => {
+    onChagelikestatus(id)
+  }
+  const islikeImage = isLiked
+    ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
+    : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
 
+  const islikeClass = isLiked ? 'islikedpara' : 'islikepara'
   return (
     <li className="eachlist">
       <div className="pro">
@@ -22,12 +29,10 @@ const CommentItem = props => {
       <p className="comment">{comment}</p>
       <div className="likeanddeletecontainer">
         <div className="likecontainer">
-          <img
-            alt="like"
-            src="https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png"
-            className="likeicon"
-          />
-          <p className="likepara">Like</p>
+          <button type="button" onClick={onLike} className="likebutton">
+            <img alt="like" src={islikeImage} className="likeicon" />
+            <p className={islikeClass}>Like</p>
+          </button>
         </div>
         <button type="button" onClick={onDeletelist} className="deleteButton">
           <img

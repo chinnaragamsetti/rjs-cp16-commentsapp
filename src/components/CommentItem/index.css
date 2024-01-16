@@ -66,8 +66,18 @@
 }
 .likepara {
   font-size: 15px;
+  color: #475569;
+}
+.likedpara {
+  font-size: 15px;
+  color: #0ea5e9;
 }
 .deleteicon {
   width: 20px;
   height: auto;
+}
+
+.likebutton {
+  background-color: transparent;
+  border: 0px;
 }
