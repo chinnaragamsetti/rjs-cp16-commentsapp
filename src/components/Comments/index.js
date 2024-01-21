@@ -15,14 +15,14 @@ const initialContainerBackgroundClassNames = [
 
 // Write your code here
 
-const initialcommentslist = []
+const initialCommentsList = []
 
 class Comments extends Component {
   state = {
     inputName: '',
     inputComment: '',
     commentsCount: 0,
-    commentsList: initialcommentslist,
+    commentsList: initialCommentsList,
   }
 
   onChangename = event => {
@@ -66,7 +66,7 @@ class Comments extends Component {
     }))
   }
 
-  onChangelikestatus = id => {
+  onChangeLikeStatus = id => {
     const {commentsList} = this.state
     const afterLikedlist = commentsList.filter(each => each.id !== id)
     this.setState({commentsList: afterLikedlist})
@@ -125,7 +125,7 @@ class Comments extends Component {
               key={eachComment.id}
               eachDetails={eachComment}
               afterDelete={this.afterDelete}
-              onChangelikestatus={this.onChangelikestatus}
+              onChangeLikeStatus={this.onChangeLikeStatus}
             />
           ))}
         </ul>

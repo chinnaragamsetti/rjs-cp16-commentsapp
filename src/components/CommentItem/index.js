@@ -3,14 +3,14 @@
 import './index.css'
 
 const CommentItem = props => {
-  const {eachDetails, afterDelete, onChagelikestatus} = props
+  const {eachDetails, afterDelete, onChageLikeStatus} = props
   const {id, name, comment, date, profileClassname, isLiked} = eachDetails
 
   const onDeletelist = () => {
     afterDelete(id)
   }
   const onLike = () => {
-    onChagelikestatus(id)
+    onChageLikeStatus(id)
   }
   const islikeImage = isLiked
     ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
