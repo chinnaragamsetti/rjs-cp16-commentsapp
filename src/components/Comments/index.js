@@ -36,6 +36,7 @@ class Comments extends Component {
   onAddcomment = event => {
     event.preventDefault()
     const {inputName, inputComment} = this.state
+
     const profileBackground =
       initialContainerBackgroundClassNames[
         Math.floor(Math.random() * initialContainerBackgroundClassNames.length)
@@ -45,11 +46,11 @@ class Comments extends Component {
       id: uuidv4(),
       name: {inputName},
       comment: {inputComment},
-      date: new Date().toLocaleString(),
+      date: new Date(),
       profileClassname: profileBackground,
       isLiked: false,
     }
-    console.log(newComment.id)
+    // console.log(newComment.date)
 
     this.setState(prevState => ({
       commentsList: [...prevState.commentsList, newComment],

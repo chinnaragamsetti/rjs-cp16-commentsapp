@@ -1,11 +1,13 @@
 // Write your code here
-
+import {formatDistanceToNow} from 'date-fns'
 import './index.css'
 
 const CommentItem = props => {
   const {eachDetails, afterDelete, onChangeLikeStatus} = props
-  const {id, name, comment, date, profileClassname, isLiked} = eachDetails
-  // const time = date.getMinutes()
+  const {id, name, date, comment, profileClassname, isLiked} = eachDetails
+  const formatted = formatDistanceToNow(new Date(date))
+  // console.log(formatDistanceToNow(new))
+  // console.log(formatted)
   const onDeletelist = () => {
     afterDelete(id)
   }
@@ -18,6 +20,7 @@ const CommentItem = props => {
     : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
 
   const islikeClass = isLiked ? 'islikedPara' : 'islikePara'
+
   return (
     <li className="eachlist">
       <div className="pro">
@@ -25,7 +28,7 @@ const CommentItem = props => {
           <h1 className="proimagehead">{name.inputName[0]}</h1>
         </div>
         <p className="name">{name.inputName}</p>
-        <p className="date">{date} minutes ago</p>
+        <p className="date">{`${formatted} ago`}</p>
       </div>
       <p className="comment">{comment.inputComment}</p>
       <div className="likeanddeletecontainer">
