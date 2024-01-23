@@ -3,35 +3,40 @@
 import './index.css'
 
 const CommentItem = props => {
-  const {eachDetails, afterDelete, onChageLikeStatus} = props
+  const {eachDetails, afterDelete, onChangeLikeStatus} = props
   const {id, name, comment, date, profileClassname, isLiked} = eachDetails
-
+  // const time = date.getMinutes()
   const onDeletelist = () => {
     afterDelete(id)
   }
+
   const onLike = () => {
-    onChageLikeStatus(id)
+    onChangeLikeStatus(id)
   }
   const islikeImage = isLiked
     ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
     : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
 
-  const islikeClass = isLiked ? 'islikedpara' : 'islikepara'
+  const islikeClass = isLiked ? 'islikedPara' : 'islikePara'
   return (
     <li className="eachlist">
       <div className="pro">
         <div className={`profileimage ${profileClassname}`}>
-          <h1 className="proimagehead">{name[0]}</h1>
+          <h1 className="proimagehead">{name.inputName[0]}</h1>
         </div>
-        <p className="name">{name}</p>
-        <p className="date">{date}</p>
+        <p className="name">{name.inputName}</p>
+        <p className="date">{date} minutes ago</p>
       </div>
-      <p className="comment">{comment}</p>
+      <p className="comment">{comment.inputComment}</p>
       <div className="likeanddeletecontainer">
         <div className="likecontainer">
-          <button type="button" onClick={onLike} className="likebutton">
-            <img alt="like" src={islikeImage} className="likeicon" />
-            <p className={islikeClass}>Like</p>
+          <img alt="like" src={islikeImage} className="likeicon" />
+          <button
+            type="button"
+            onClick={onLike}
+            className={` likebutton ${islikeClass}`}
+          >
+            <p>Like</p>
           </button>
         </div>
         <button type="button" onClick={onDeletelist} className="deleteButton">
@@ -43,6 +48,7 @@ const CommentItem = props => {
           />
         </button>
       </div>
+      <hr className="hrline" />
     </li>
   )
 }

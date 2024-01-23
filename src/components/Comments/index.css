@@ -54,6 +54,7 @@
   width: 40%;
   padding-top: 5px;
   padding-bottom: 5px;
+  cursor: pointer;
 }
 .image {
   width: 50%;
@@ -86,4 +87,6 @@
 .commentslist {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding-left: 0px;
 }

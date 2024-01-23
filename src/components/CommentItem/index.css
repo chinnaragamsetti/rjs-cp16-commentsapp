@@ -34,50 +34,68 @@
 }
 .pro {
   display: flex;
+
+  align-items: center;
 }
 .profileimage {
   width: 30px;
   height: 30px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3px;
+  margin-right: 10px;
 }
-.profileimagehead {
-  font-size: 10px;
+.proimagehead {
+  font-size: 20px;
+  color: #ffffff;
 }
 
 .name {
   font-size: 20px;
   color: #1e293b;
   font-weight: bold;
+  margin-right: 10px;
 }
 .comment {
   font-size: 15px;
-  padding-left: 20px;
+  padding-left: 40px;
 }
 .likeanddeletecontainer {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 .likecontainer {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .likeicon {
   width: 20px;
   height: auto;
 }
-.likepara {
+.likePara {
   font-size: 15px;
   color: #475569;
 }
-.likedpara {
+.likedPara {
   font-size: 15px;
   color: #0ea5e9;
 }
-.deleteicon {
+.deleteButton {
   width: 20px;
   height: auto;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
 }
 
 .likebutton {
   background-color: transparent;
   border: 0px;
+  cursor: pointer;
 }
